@@ -1,5 +1,12 @@
 import { Button, Heading, Text } from "@radix-ui/themes";
 import { ArrowRight, ChevronRight, Plus } from "lucide-react";
+import { IconActionButton } from "@/components/ui/icon-action-button";
+import { PageContextTrail } from "@/components/ui/page-context-trail";
+import { PanelHeader } from "@/components/ui/panel-header";
+import { ProgressMeter } from "@/components/ui/progress-meter";
+import { DisclosureRow, IndentedRow, RecentEntryRow } from "@/components/ui/rows";
+import { SearchTrigger } from "@/components/ui/search-trigger";
+import { StartPathPanel } from "@/components/ui/start-path-panel";
 
 const typographyStyles = [
   {
@@ -163,7 +170,7 @@ export default function DesignSystemPage() {
               <summary className="grid h-[var(--spacing-40)] cursor-pointer list-none grid-cols-[128px_minmax(0,1fr)_16px] items-center gap-[var(--spacing-12)] px-[var(--spacing-16)] outline-none transition-colors hover:bg-[var(--console-surface)] focus-visible:bg-[var(--console-surface)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--console-focus)] sm:px-[var(--spacing-24)]">
                 <Text size="2" weight="medium" className="text-[var(--console-text)]">Typography</Text>
                 <Text size="1" className="hidden text-[var(--console-text-subtle)] sm:block">Font family, hierarchy and type styles</Text>
-                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-150 group-open:rotate-90" />
+                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-open:rotate-90" />
               </summary>
 
               <div className="border-t border-[var(--console-border)] px-4 py-8 sm:px-6 md:py-10">
@@ -206,7 +213,7 @@ export default function DesignSystemPage() {
               <summary className="grid h-[var(--spacing-40)] cursor-pointer list-none grid-cols-[128px_minmax(0,1fr)_16px] items-center gap-[var(--spacing-12)] px-[var(--spacing-16)] outline-none transition-colors hover:bg-[var(--console-surface)] focus-visible:bg-[var(--console-surface)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--console-focus)] sm:px-[var(--spacing-24)]">
                 <Text size="2" weight="medium" className="text-[var(--console-text)]">Colours</Text>
                 <Text size="1" className="hidden text-[var(--console-text-subtle)] sm:block">Surfaces, borders and text hierarchy</Text>
-                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-150 group-open:rotate-90" />
+                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-open:rotate-90" />
               </summary>
 
               <div className="border-t border-[var(--console-border)]">
@@ -247,7 +254,7 @@ export default function DesignSystemPage() {
               <summary className="grid h-[var(--spacing-40)] cursor-pointer list-none grid-cols-[128px_minmax(0,1fr)_16px] items-center gap-[var(--spacing-12)] px-[var(--spacing-16)] outline-none transition-colors hover:bg-[var(--console-surface)] focus-visible:bg-[var(--console-surface)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--console-focus)] sm:px-[var(--spacing-24)]">
                 <Text size="2" weight="medium" className="text-[var(--console-text)]">Buttons</Text>
                 <Text size="1" className="hidden text-[var(--console-text-subtle)] sm:block">Primary, secondary, sizes and interaction states</Text>
-                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-150 group-open:rotate-90" />
+                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-open:rotate-90" />
               </summary>
 
               <div className="border-t border-[var(--console-border)]">
@@ -277,7 +284,7 @@ export default function DesignSystemPage() {
                           Small
                         </Button>
                         <Button size="2" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] active:!bg-[var(--console-button-secondary-active)]">
-                          <Plus size={14} /> Add item
+                          <Plus size={15} strokeWidth={1.8} /> Add item
                         </Button>
                         <Button size="3" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] active:!bg-[var(--console-button-secondary-active)]">
                           Large
@@ -315,9 +322,128 @@ export default function DesignSystemPage() {
 
             <details open className="group border-t border-[var(--console-border)]">
               <summary className="grid h-[var(--spacing-40)] cursor-pointer list-none grid-cols-[128px_minmax(0,1fr)_16px] items-center gap-[var(--spacing-12)] px-[var(--spacing-16)] outline-none transition-colors hover:bg-[var(--console-surface)] focus-visible:bg-[var(--console-surface)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--console-focus)] sm:px-[var(--spacing-24)]">
+                <Text size="2" weight="medium" className="text-[var(--console-text)]">Components</Text>
+                <Text size="1" className="hidden text-[var(--console-text-subtle)] sm:block">Reusable app primitives rendered from the shared source</Text>
+                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="ml-auto text-[var(--console-text-muted)] transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-open:rotate-90" />
+              </summary>
+
+              <div className="border-t border-[var(--console-border)]">
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Top bar context" secondary />
+                  <div className="grid gap-[var(--spacing-16)] px-[var(--spacing-16)] py-[var(--spacing-24)] sm:px-[var(--spacing-24)] lg:grid-cols-2">
+                    <div className="h-[var(--shell-header-height)] border border-[var(--console-border)] bg-[var(--console-header)]">
+                      <PageContextTrail section="Command" view="Current focus" className="!flex h-full" />
+                    </div>
+                    <div className="h-[var(--shell-header-height)] border border-[var(--console-border)] bg-[var(--console-header)]">
+                      <PageContextTrail section="Design system" view="Foundation" className="!flex h-full" />
+                    </div>
+                  </div>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Panel headers" secondary />
+                  <div className="grid gap-[var(--spacing-16)] px-[var(--spacing-16)] py-[var(--spacing-24)] sm:px-[var(--spacing-24)] lg:grid-cols-2">
+                    <div className="border border-[var(--console-border)] bg-[var(--console-input)]">
+                      <PanelHeader title="Current focus" actionLabel="Add focus area" secondary />
+                    </div>
+                    <div className="border border-[var(--console-border)] bg-[var(--console-input)]">
+                      <PanelHeader title="Recent entries" actionLabel="Add entry" secondary />
+                    </div>
+                  </div>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Icon actions" secondary />
+                  <div className="flex flex-wrap items-center gap-[var(--spacing-12)] px-[var(--spacing-16)] py-[var(--spacing-24)] sm:px-[var(--spacing-24)]">
+                    {["Add item", "Add row", "Add focus area"].map((label) => (
+                      <div key={label} className="flex items-center gap-[var(--spacing-8)] border border-[var(--console-border)] bg-[var(--console-input)] px-[var(--spacing-8)] py-[var(--spacing-4)]">
+                        <IconActionButton label={label} />
+                        <Text as="p" className="text-[length:var(--type-body03-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-muted)]">{label}</Text>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Disclosure rows" actionLabel="Add row" secondary />
+                  <details open className="group bg-[var(--console-input)]">
+                    <DisclosureRow title="Trading" meta="Market preparation and review" />
+                    <div>
+                      <IndentedRow title="Review weekly strategy" meta="Next review Friday">
+                        <ProgressMeter value={72} />
+                      </IndentedRow>
+                      <IndentedRow title="Refine execution checklist" meta="6 of 8 checks defined">
+                        <ProgressMeter value={75} />
+                      </IndentedRow>
+                    </div>
+                  </details>
+                  <details className="group bg-[var(--console-input)]">
+                    <DisclosureRow title="Personal systems" meta="Routines and operating rhythm" />
+                  </details>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Indented rows" secondary />
+                  <div className="bg-[var(--console-input)]">
+                    <IndentedRow title="Build the interface system" meta="Typography, colour and spacing">
+                      <ProgressMeter value={64} />
+                    </IndentedRow>
+                    <IndentedRow title="Shape the Command view" meta="Current focus">
+                      <ProgressMeter value={38} />
+                    </IndentedRow>
+                    <IndentedRow title="Kitchen renovation plan" meta="Planning">
+                      <ProgressMeter value={42} />
+                    </IndentedRow>
+                  </div>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Recent entry rows" actionLabel="Add entry" secondary />
+                  <div className="divide-y divide-[var(--console-border)] border-t border-[var(--console-border)]">
+                    <RecentEntryRow title="NQ strategy review" when="Today" tone="accent" />
+                    <RecentEntryRow title="Console layout direction" when="Today" tone="blue" />
+                    <RecentEntryRow title="Kitchen scope notes" when="Yesterday" tone="amber" />
+                    <RecentEntryRow title="Upper-body training" when="Yesterday" tone="red" />
+                    <RecentEntryRow title="Weekly review complete" when="Jun 11" tone="green" />
+                  </div>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Progress meters" secondary />
+                  <div className="grid gap-[var(--spacing-16)] px-[var(--spacing-16)] py-[var(--spacing-24)] sm:px-[var(--spacing-24)] lg:grid-cols-3">
+                    <div className="group/item bg-[var(--console-input)]">
+                      <ProgressMeter value={24} />
+                    </div>
+                    <div className="group/item bg-[var(--console-input)]">
+                      <ProgressMeter value={68} />
+                    </div>
+                    <div className="group/item bg-[var(--console-input)]">
+                      <ProgressMeter value={92} />
+                    </div>
+                  </div>
+                </section>
+
+                <section className="border-b border-[var(--console-border)]">
+                  <PanelHeader title="Search trigger" secondary />
+                  <div className="flex justify-end px-[var(--spacing-16)] py-[var(--spacing-24)] sm:px-[var(--spacing-24)]">
+                    <SearchTrigger />
+                  </div>
+                </section>
+
+                <section>
+                  <PanelHeader title="Start path panel" secondary />
+                  <div className="max-w-md bg-[var(--console-input)]">
+                    <StartPathPanel />
+                  </div>
+                </section>
+              </div>
+            </details>
+
+            <details open className="group border-t border-[var(--console-border)]">
+              <summary className="grid h-[var(--spacing-40)] cursor-pointer list-none grid-cols-[128px_minmax(0,1fr)_16px] items-center gap-[var(--spacing-12)] px-[var(--spacing-16)] outline-none transition-colors hover:bg-[var(--console-surface)] focus-visible:bg-[var(--console-surface)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--console-focus)] sm:px-[var(--spacing-24)]">
                 <Text size="2" weight="medium" className="text-[var(--console-text)]">Spacing</Text>
                 <Text size="1" className="hidden text-[var(--console-text-subtle)] sm:block">A consistent scale for components and layout rhythm</Text>
-                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="text-[var(--console-text-muted)] transition-transform duration-150 group-open:rotate-90" />
+                <ChevronRight aria-hidden="true" size={16} strokeWidth={1.7} className="text-[var(--console-text-muted)] transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-open:rotate-90" />
               </summary>
 
               <div className="border-t border-[var(--console-border)]">

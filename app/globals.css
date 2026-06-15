@@ -38,6 +38,9 @@
   --console-danger: #e97878;
   --console-focus: #a7cfc2;
   --console-selection: #293a35;
+  --console-status-blue: #7189ff;
+  --console-status-amber: #efb366;
+  --console-status-green: #64bf76;
 
   --console-button-primary: #a7cfc2;
   --console-button-primary-hover: #293a35;
@@ -69,6 +72,9 @@
 
   --shell-header-height: 64px;
   --shell-sidebar-width: 64px;
+  --shell-search-width: 180px;
+  --shell-search-width-expanded: 220px;
+  --shell-mobile-nav-width: min(82vw, 280px);
 
   --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -84,6 +90,33 @@
   --leading-normal: 1.5;
   --tracking-heading: -0.5px;
   --tracking-body: 0;
+  --type-body01-size: 14px;
+  --type-body02-size: 16px;
+  --type-body03-size: 12px;
+  --type-key-size: 10px;
+
+  --motion-chevron-duration: 120ms;
+  --motion-chevron-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-chevron-shift: 4px;
+  --motion-content-shift: 8px;
+  --motion-menu-duration: 180ms;
+  --motion-menu-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --control-icon-button-size: var(--spacing-32);
+  --avatar-size: var(--spacing-40);
+  --status-dot-size: var(--spacing-8);
+  --scroll-cue-height: var(--spacing-64);
+  --logo-rail-width: 27px;
+  --logo-rail-height: 44px;
+  --logo-lockup-width: 120px;
+  --logo-lockup-height: 36px;
+  --focus-task-progress-column: 112px;
+  --focus-task-progress-column-wide: 160px;
+  --focus-task-chevron-left: var(--spacing-12);
+  --progress-height: var(--spacing-4);
+  --placeholder-content-width: 430px;
+  --placeholder-copy-width: 390px;
+  --placeholder-min-height: 460px;
 
   --radius-sm: 6px;
   --radius-md: 9px;
@@ -144,11 +177,41 @@ summary::-webkit-details-marker {
   .rt-DialogContent {
     transition-duration: 160ms;
   }
+
+  .console-mobile-menu[data-state="open"] {
+    animation: console-mobile-menu-in var(--motion-menu-duration) var(--motion-menu-ease);
+  }
+
+  .console-mobile-menu[data-state="closed"] {
+    animation: console-mobile-menu-out 120ms ease-in;
+  }
 }
 
 @keyframes console-scroll-cue {
   0%, 100% { transform: translateY(-2px); }
   50% { transform: translateY(2px); }
+}
+
+@keyframes console-mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes console-mobile-menu-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 }
 
 .console-task-progress > div {

@@ -30,8 +30,6 @@
   },
   "include": [
     "next-env.d.ts",
-    ".next-preview/types/**/*.ts",
-    ".next-preview/dev/types/**/*.ts",
     "app/**/*.ts",
     "app/**/*.tsx",
     "components/**/*.ts",
@@ -44,6 +42,7 @@
     "node_modules",
     ".next",
     ".next-local",
-    ".next-open"
+    ".next-open",
+    ".next-preview"
   ]
 }
