@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* Console design tokens: primitives first, semantic aliases second. Shell, section, and navigation states use explicit roles. */
+
+:root {
+  --primitive-50: #a6a6a6;
+  --primitive-100: #5f5f5f;
+  --primitive-200: #3d3d3d;
+  --primitive-300: #262626;
+  --primitive-400: #212121;
+  --primitive-500: #1e1e1e;
+  --primitive-600: #1b1b1b;
+  --primitive-700: #171717;
+  --primitive-800: #131313;
+  --primitive-900: #000000;
+  --primitive-n0: #ffffff;
+
+  --console-bg: #000000;
+  --console-sidebar: #131313;
+  --console-surface: #171717;
+  --console-surface-secondary: #131313;
+  --console-surface-raised: #131313;
+  --console-surface-hover: #1b1b1b;
+  --console-input: #171717;
+  --console-nav-item-selected: #1b1b1b;
+  --console-header: #131313;
+  --console-border: #212121;
+  --console-border-strong: #1e1e1e;
+  --console-border-accent: #1c2623;
+  --console-text: #a6a6a6;
+  --console-text-muted: #5f5f5f;
+  --console-text-subtle: #3d3d3d;
+  --console-text-inverse: #ffffff;
+  --console-accent-400: #a7cfc2;
+  --console-accent-500: #293a35;
+  --console-accent-600: #1c2623;
+  --console-accent: #a7cfc2;
+  --console-danger: #e97878;
+  --console-focus: #a7cfc2;
+  --console-selection: #293a35;
+
+  --console-button-primary: #a7cfc2;
+  --console-button-primary-hover: #293a35;
+  --console-button-primary-active: #1c2623;
+  --console-button-primary-text: #000000;
+  --console-button-secondary: #1b1b1b;
+  --console-button-secondary-hover: #1e1e1e;
+  --console-button-secondary-active: #212121;
+  --console-button-secondary-text: #a6a6a6;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-64: 64px;
+
+  --shell-header-height: 64px;
+  --shell-sidebar-width: 64px;
+
+  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-display: 2rem;
+
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --tracking-heading: -0.5px;
+  --tracking-body: 0;
+
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 12px;
+  --radius-full: 999px;
+  --border-width: 1px;
+}
+
+@media (min-width: 1100px) {
+  :root {
+    --shell-sidebar-width: 220px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--console-bg);
+}
+
+body {
+  margin: 0;
+  background: var(--console-bg);
+  color: var(--console-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  background: var(--console-selection);
+  color: var(--console-text);
+}
+
+.rt-BaseDialogOverlay {
+  backdrop-filter: blur(8px);
+}
+
+.console-rail-tooltip > span:has(.rt-TooltipArrow) {
+  display: none !important;
+}
+
+.console-rail-tooltip > .rt-TooltipText {
+  color: var(--console-text-inverse) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rt-DialogContent {
+    transition-duration: 160ms;
+  }
+}
+
+@keyframes console-scroll-cue {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(2px); }
+}
+
+.console-task-progress > div {
+  transition: box-shadow 180ms ease, filter 180ms ease;
+}
+
+.console-focus-task:hover .console-task-progress > div {
+  box-shadow:
+    0 0 4px rgb(167 207 194 / 28%),
+    0 0 10px rgb(167 207 194 / 20%);
+  filter: brightness(1.1);
+}
