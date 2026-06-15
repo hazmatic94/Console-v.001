@@ -33,7 +33,7 @@ const navItems: NavItem[] = [
 const headerContext: Record<string, { backHref?: string; backLabel?: string; section: string; view?: string }> = {
   "/command": { section: "Command", view: "Current focus" },
   "/paths": { section: "Paths", view: "Overview" },
-  "/paths/new": { backHref: "/command", backLabel: "Back to Command", section: "Starting a new path" },
+  "/paths/new": { backHref: "/command", backLabel: "Back to Command", section: "Create Path" },
   "/missions": { section: "Missions", view: "Overview" },
   "/architect": { section: "Architect", view: "Overview" },
   "/settings": { section: "Settings", view: "Preferences" },
@@ -55,6 +55,20 @@ function MobileMenuButton({ open }: { open: boolean }) {
       <span className={`absolute left-0 top-[4px] h-px w-full bg-current transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] ${open ? "translate-y-[4px] rotate-45" : ""}`} />
       <span className={`absolute left-0 top-[12px] h-px w-full bg-current transition-transform duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] ${open ? "-translate-y-[4px] -rotate-45" : ""}`} />
     </span>
+  );
+}
+
+function RailTooltip({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="console-rail-tooltip relative hidden md:block min-[1100px]:contents">
+      {children}
+      <span
+        role="tooltip"
+        className="console-rail-tooltip-label pointer-events-none absolute left-[calc(100%+var(--spacing-8))] top-1/2 z-50 hidden -translate-y-1/2 translate-x-[var(--spacing-4)] whitespace-nowrap rounded-[var(--radius-sm)] border border-[var(--console-border)] bg-[var(--console-sidebar)] px-[var(--spacing-8)] py-[var(--spacing-4)] text-[length:var(--type-body03-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-inverse)] opacity-0 transition-[opacity,transform] duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] md:block min-[1100px]:hidden"
+      >
+        {label}
+      </span>
+    </div>
   );
 }
 
@@ -83,7 +97,7 @@ function Navigation({ onNavigate, expanded = false }: { onNavigate?: () => void;
           </Link>
         );
 
-        return link;
+        return expanded ? link : <RailTooltip key={href} label={label}>{link}</RailTooltip>;
       })}
     </nav>
   );
@@ -132,7 +146,7 @@ function Sidebar({ onNavigate, expanded = false }: { onNavigate?: () => void; ex
         <Navigation onNavigate={onNavigate} expanded={expanded} />
       </div>
       <div className={`mt-auto pb-[var(--spacing-24)] ${expanded ? "px-[var(--spacing-24)]" : "px-[var(--spacing-16)] min-[1100px]:px-[var(--spacing-24)]"}`}>
-        {logoutButton}
+        {expanded ? logoutButton : <RailTooltip label="Log out">{logoutButton}</RailTooltip>}
       </div>
     </div>
   );

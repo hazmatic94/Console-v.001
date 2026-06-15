@@ -173,6 +173,12 @@ summary::-webkit-details-marker {
   }
 }
 
+.console-rail-tooltip:hover .console-rail-tooltip-label,
+.console-rail-tooltip:focus-within .console-rail-tooltip-label {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
 @keyframes console-scroll-cue {
   0%, 100% { transform: translateY(-2px); }
   50% { transform: translateY(2px); }
