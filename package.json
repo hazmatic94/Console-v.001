@@ -9,7 +9,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@radix-ui/themes": "latest",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",

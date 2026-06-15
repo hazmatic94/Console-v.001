@@ -90,6 +90,8 @@
   --leading-normal: 1.5;
   --tracking-heading: -0.5px;
   --tracking-body: 0;
+  --type-h1-size: 32px;
+  --type-h2-size: 24px;
   --type-body01-size: 14px;
   --type-body02-size: 16px;
   --type-body03-size: 12px;
@@ -161,23 +163,7 @@ summary::-webkit-details-marker {
   color: var(--console-text);
 }
 
-.rt-BaseDialogOverlay {
-  backdrop-filter: blur(8px);
-}
-
-.console-rail-tooltip > span:has(.rt-TooltipArrow) {
-  display: none !important;
-}
-
-.console-rail-tooltip > .rt-TooltipText {
-  color: var(--console-text-inverse) !important;
-}
-
 @media (prefers-reduced-motion: no-preference) {
-  .rt-DialogContent {
-    transition-duration: 160ms;
-  }
-
   .console-mobile-menu[data-state="open"] {
     animation: console-mobile-menu-in var(--motion-menu-duration) var(--motion-menu-ease);
   }

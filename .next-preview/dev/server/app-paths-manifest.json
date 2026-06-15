@@ -1,5 +1,6 @@
 {
   "/command/page": "app/command/page.js",
   "/design-system/page": "app/design-system/page.js",
-  "/paths/page": "app/paths/page.js"
+  "/paths/page": "app/paths/page.js",
+  "/paths/new/page": "app/paths/new/page.js"
 }

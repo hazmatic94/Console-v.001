@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Theme } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
 import "./globals.css";
 import { AppShell } from "@/components/app-shell";
 
@@ -13,9 +11,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
-        <Theme appearance="dark" accentColor="gray" grayColor="slate" radius="medium" scaling="100%">
-          <AppShell>{children}</AppShell>
-        </Theme>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

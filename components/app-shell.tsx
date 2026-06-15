@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Dialog, Flex, Text, Tooltip } from "@radix-ui/themes";
 import {
   ChevronRight,
   Command as CommandIcon,
@@ -31,9 +30,10 @@ const navItems: NavItem[] = [
   { label: "Design system", href: "/design-system", icon: Palette },
 ];
 
-const headerContext: Record<string, { section: string; view: string }> = {
+const headerContext: Record<string, { backHref?: string; backLabel?: string; section: string; view?: string }> = {
   "/command": { section: "Command", view: "Current focus" },
   "/paths": { section: "Paths", view: "Overview" },
+  "/paths/new": { backHref: "/command", backLabel: "Back to Command", section: "Starting a new path" },
   "/missions": { section: "Missions", view: "Overview" },
   "/architect": { section: "Architect", view: "Overview" },
   "/settings": { section: "Settings", view: "Preferences" },
@@ -64,7 +64,7 @@ function Navigation({ onNavigate, expanded = false }: { onNavigate?: () => void;
   return (
     <nav aria-label="Primary navigation" className={expanded ? "flex flex-col gap-px px-[var(--spacing-24)]" : "flex flex-col items-center gap-px px-[var(--spacing-16)] min-[1100px]:items-stretch min-[1100px]:px-[var(--spacing-24)]"}>
       {navItems.map(({ label, href, icon: Icon }) => {
-        const active = pathname === href;
+        const active = pathname === href || (href !== "/command" && pathname.startsWith(`${href}/`));
         const link = (
           <Link
             key={href}
@@ -83,11 +83,7 @@ function Navigation({ onNavigate, expanded = false }: { onNavigate?: () => void;
           </Link>
         );
 
-        return expanded ? link : (
-          <Tooltip key={href} content={label} side="right" delayDuration={250} className="console-rail-tooltip !border !border-[var(--console-border)] !bg-[var(--console-input)] !text-[var(--console-text-muted)] !shadow-none min-[1100px]:!hidden">
-            {link}
-          </Tooltip>
-        );
+        return link;
       })}
     </nav>
   );
@@ -101,8 +97,8 @@ function UserIdentity({ expanded = false }: { expanded?: boolean }) {
           <Image src="/harry-maher-avatar.png" alt="Harry Maher" fill sizes="36px" className="object-cover object-center" />
         </div>
         <div className={expanded ? "min-w-0" : "hidden min-w-0 min-[1100px]:block"}>
-          <Text as="p" truncate className="text-[length:var(--type-body01-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-inverse)]">Harry Maher</Text>
-          <Text as="p" truncate className="mt-px text-[length:var(--type-body03-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-muted)] transition-colors group-hover/user:text-[var(--primitive-50)]">The Architect</Text>
+          <p className="truncate text-[length:var(--type-body01-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-inverse)]">Harry Maher</p>
+          <p className="mt-px truncate text-[length:var(--type-body03-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-muted)] transition-colors group-hover/user:text-[var(--primitive-50)]">The Architect</p>
         </div>
         <ChevronRight size={15} strokeWidth={1.7} className={`ml-auto shrink-0 -translate-x-[var(--motion-chevron-shift)] text-[var(--console-text-muted)] transition-[color,transform] duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-hover/user:translate-x-0 group-hover/user:text-[var(--console-text-inverse)] motion-reduce:transform-none motion-reduce:transition-none ${expanded ? "block" : "hidden min-[1100px]:block"}`} />
       </div>
@@ -114,7 +110,7 @@ function HeaderContext() {
   const pathname = usePathname();
   const context = headerContext[pathname] ?? { section: "Console", view: "Overview" };
 
-  return <PageContextTrail section={context.section} view={context.view} />;
+  return <PageContextTrail backHref={context.backHref} backLabel={context.backLabel} section={context.section} view={context.view} />;
 }
 
 function Sidebar({ onNavigate, expanded = false }: { onNavigate?: () => void; expanded?: boolean }) {
@@ -130,38 +126,33 @@ function Sidebar({ onNavigate, expanded = false }: { onNavigate?: () => void; ex
   );
 
   return (
-    <Flex direction="column" className="h-full bg-[var(--console-sidebar)]">
+    <div className="flex h-full flex-col bg-[var(--console-sidebar)]">
       <UserIdentity expanded={expanded} />
       <div className="pt-[var(--spacing-16)]">
         <Navigation onNavigate={onNavigate} expanded={expanded} />
       </div>
       <div className={`mt-auto pb-[var(--spacing-24)] ${expanded ? "px-[var(--spacing-24)]" : "px-[var(--spacing-16)] min-[1100px]:px-[var(--spacing-24)]"}`}>
-        {expanded ? logoutButton : (
-          <Tooltip content="Log out" side="right" delayDuration={250} className="console-rail-tooltip !border !border-[var(--console-border)] !bg-[var(--console-input)] !text-[var(--console-text-muted)] !shadow-none min-[1100px]:!hidden">
-            {logoutButton}
-          </Tooltip>
-        )}
+        {logoutButton}
       </div>
-    </Flex>
+    </div>
   );
 }
 
-function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
+function MobileMenu({ onClose, onNavigate }: { onClose: () => void; onNavigate: () => void }) {
   return (
     <div className="flex h-dvh flex-col overflow-y-auto bg-[var(--console-sidebar)]">
       <div className="flex h-[var(--shell-header-height)] shrink-0 items-center justify-between border-b border-[var(--console-border)] px-[var(--spacing-16)]">
         <div className="w-[var(--logo-lockup-width)]">
           <Brand mobileFull />
         </div>
-        <Dialog.Close>
-          <button
-            type="button"
-            aria-label="Close navigation"
-            className="grid size-[var(--spacing-32)] place-items-center rounded-[var(--radius-sm)] text-[var(--console-text-inverse)] outline-none transition-colors hover:bg-[var(--console-surface-hover)] focus-visible:ring-2 focus-visible:ring-[var(--console-focus)]"
-          >
-            <X size={18} strokeWidth={1.8} />
-          </button>
-        </Dialog.Close>
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={onClose}
+          className="grid size-[var(--spacing-32)] place-items-center rounded-[var(--radius-sm)] text-[var(--console-text-inverse)] outline-none transition-colors hover:bg-[var(--console-surface-hover)] focus-visible:ring-2 focus-visible:ring-[var(--console-focus)]"
+        >
+          <X size={18} strokeWidth={1.8} />
+        </button>
       </div>
 
       <div className="border-b border-[var(--console-border)] px-[var(--spacing-16)] py-[var(--spacing-16)]">
@@ -205,22 +196,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <div className="w-[var(--logo-lockup-width)]">
             <Brand mobileFull />
           </div>
-          <Dialog.Root open={open} onOpenChange={setOpen}>
-            <Dialog.Trigger>
-              <button
-                type="button"
-                aria-label="Open navigation"
-                className="grid size-[var(--spacing-32)] place-items-center rounded-[var(--radius-sm)] text-[var(--console-text-inverse)] outline-none transition-colors hover:bg-[var(--console-surface-hover)] focus-visible:ring-2 focus-visible:ring-[var(--console-focus)]"
-              >
-                <MobileMenuButton open={open} />
-              </button>
-            </Dialog.Trigger>
-            <Dialog.Content className="console-mobile-menu !fixed !inset-x-0 !inset-y-0 !m-0 !h-dvh !w-full !max-w-none !translate-x-0 !translate-y-0 !rounded-none !border-0 !bg-[var(--console-sidebar)] !p-0">
-              <Dialog.Title className="sr-only">Navigation</Dialog.Title>
-              <MobileMenu onNavigate={() => setOpen(false)} />
-            </Dialog.Content>
-          </Dialog.Root>
+          <button
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded={open}
+            onClick={() => setOpen(true)}
+            className="grid size-[var(--spacing-32)] place-items-center rounded-[var(--radius-sm)] text-[var(--console-text-inverse)] outline-none transition-colors hover:bg-[var(--console-surface-hover)] focus-visible:ring-2 focus-visible:ring-[var(--console-focus)]"
+          >
+            <MobileMenuButton open={open} />
+          </button>
         </div>
+
+        {open && (
+          <div role="dialog" aria-modal="true" aria-label="Navigation" className="console-mobile-menu fixed inset-0 z-50 h-dvh w-full bg-[var(--console-sidebar)]">
+            <MobileMenu onClose={() => setOpen(false)} onNavigate={() => setOpen(false)} />
+          </div>
+        )}
 
         <HeaderContext />
         <div className="hidden md:block">

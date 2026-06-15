@@ -1,8 +1,8 @@
-import { Button, Heading, Text } from "@radix-ui/themes";
 import { ArrowRight, ChevronRight, Plus } from "lucide-react";
 import { IconActionButton } from "@/components/ui/icon-action-button";
 import { PageContextTrail } from "@/components/ui/page-context-trail";
 import { PanelHeader } from "@/components/ui/panel-header";
+import { Button, Heading, Text } from "@/components/ui/primitives";
 import { ProgressMeter } from "@/components/ui/progress-meter";
 import { DisclosureRow, IndentedRow, RecentEntryRow } from "@/components/ui/rows";
 import { SearchTrigger } from "@/components/ui/search-trigger";
@@ -16,7 +16,7 @@ const typographyStyles = [
     size: "32px",
     lineHeight: "150%",
     tracking: "-0.5px",
-    className: "text-[32px] leading-[1.5] tracking-[-0.5px]",
+    className: "text-[length:var(--type-h1-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-heading)]",
   },
   {
     name: "h2",
@@ -25,7 +25,7 @@ const typographyStyles = [
     size: "24px",
     lineHeight: "150%",
     tracking: "-0.5px",
-    className: "text-[24px] leading-[1.5] tracking-[-0.5px]",
+    className: "text-[length:var(--type-h2-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-heading)]",
   },
   {
     name: "body01",

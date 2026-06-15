@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/architect/page": "/architect",
+  "/command/page": "/command",
+  "/design-system/page": "/design-system",
+  "/missions/page": "/missions",
+  "/page": "/",
+  "/paths/new/page": "/paths/new",
+  "/paths/page": "/paths",
+  "/settings/page": "/settings"
+}
