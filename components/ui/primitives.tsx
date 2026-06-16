@@ -56,14 +56,15 @@ type ButtonProps = {
   children: ReactNode;
   className?: string;
   disabled?: boolean;
+  onClick?: ComponentPropsWithoutRef<"button">["onClick"];
   size?: "1" | "2" | "3";
   type?: "button" | "submit" | "reset";
   variant?: string;
   color?: string;
 };
 
-export function Button({ asChild = false, children, className = "", disabled = false, type = "button" }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center gap-[var(--spacing-8)] rounded-[var(--radius-sm)] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--console-focus)] disabled:cursor-not-allowed disabled:opacity-45 ${className}`;
+export function Button({ asChild = false, children, className = "", disabled = false, onClick, type = "button" }: ButtonProps) {
+  const classes = `inline-flex items-center justify-center gap-[var(--spacing-8)] rounded-[var(--radius-sm)] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--console-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45 ${className}`;
 
   if (asChild && isValidElement(children)) {
     const child = children as ReactElement<{ className?: string }>;
@@ -71,7 +72,7 @@ export function Button({ asChild = false, children, className = "", disabled = f
   }
 
   return (
-    <button type={type} disabled={disabled} className={classes}>
+    <button type={type} disabled={disabled} className={classes} onClick={onClick}>
       {children}
     </button>
   );

@@ -264,13 +264,13 @@ export default function DesignSystemPage() {
                       <Text as="p" size="2" weight="medium">Primary</Text>
                       <Text as="p" size="1" className="mt-1 text-[var(--console-text-subtle)]">Use once per focused surface for the clearest next action.</Text>
                       <div className="mt-5 flex flex-wrap items-center gap-3">
-                        <Button size="1" className="!border !border-[var(--console-border-accent)] !bg-[var(--console-button-primary)] !text-[var(--console-button-primary-text)] !shadow-none hover:!bg-[var(--console-button-primary-hover)] hover:!text-[var(--console-text)] active:!bg-[var(--console-button-primary-active)]">
+                        <Button size="1" className="!border !border-[var(--console-border-accent)] !bg-[var(--console-button-primary)] !text-[var(--console-button-primary-text)] !shadow-none hover:!bg-[var(--console-button-primary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-primary-active)]">
                           Small
                         </Button>
-                        <Button size="2" className="!border !border-[var(--console-border-accent)] !bg-[var(--console-button-primary)] !text-[var(--console-button-primary-text)] !shadow-none hover:!bg-[var(--console-button-primary-hover)] hover:!text-[var(--console-text)] active:!bg-[var(--console-button-primary-active)]">
+                        <Button size="2" className="!border !border-[var(--console-border-accent)] !bg-[var(--console-button-primary)] !text-[var(--console-button-primary-text)] !shadow-none hover:!bg-[var(--console-button-primary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-primary-active)]">
                           Continue <ArrowRight size={14} />
                         </Button>
-                        <Button size="3" className="!border !border-[var(--console-border-accent)] !bg-[var(--console-button-primary)] !text-[var(--console-button-primary-text)] !shadow-none hover:!bg-[var(--console-button-primary-hover)] hover:!text-[var(--console-text)] active:!bg-[var(--console-button-primary-active)]">
+                        <Button size="3" className="!border !border-[var(--console-border-accent)] !bg-[var(--console-button-primary)] !text-[var(--console-button-primary-text)] !shadow-none hover:!bg-[var(--console-button-primary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-primary-active)]">
                           Large
                         </Button>
                       </div>
@@ -280,13 +280,13 @@ export default function DesignSystemPage() {
                       <Text as="p" size="2" weight="medium">Secondary</Text>
                       <Text as="p" size="1" className="mt-1 text-[var(--console-text-subtle)]">Use for supporting actions and lower-emphasis choices.</Text>
                       <div className="mt-5 flex flex-wrap items-center gap-3">
-                        <Button size="1" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] active:!bg-[var(--console-button-secondary-active)]">
+                        <Button size="1" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
                           Small
                         </Button>
-                        <Button size="2" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] active:!bg-[var(--console-button-secondary-active)]">
+                        <Button size="2" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
                           <Plus size={15} strokeWidth={1.8} /> Add item
                         </Button>
-                        <Button size="3" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] active:!bg-[var(--console-button-secondary-active)]">
+                        <Button size="3" variant="soft" color="gray" className="!border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
                           Large
                         </Button>
                       </div>

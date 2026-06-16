@@ -33,7 +33,7 @@ const navItems: NavItem[] = [
 const headerContext: Record<string, { backHref?: string; backLabel?: string; section: string; view?: string }> = {
   "/command": { section: "Command", view: "Current focus" },
   "/paths": { section: "Paths", view: "Overview" },
-  "/paths/new": { backHref: "/command", backLabel: "Back to Command", section: "Create Path" },
+  "/paths/new": { section: "Command", view: "Create Path" },
   "/missions": { section: "Missions", view: "Overview" },
   "/architect": { section: "Architect", view: "Overview" },
   "/settings": { section: "Settings", view: "Preferences" },
