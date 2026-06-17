@@ -251,7 +251,7 @@ summary::-webkit-details-marker {
 }
 
 .console-cta:hover svg {
-  color: var(--console-accent-400);
+  color: var(--console-accent-400) !important;
 }
 
 .console-path-type-pill {

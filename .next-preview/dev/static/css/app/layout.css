@@ -2398,7 +2398,7 @@ summary::-webkit-details-marker {
   transition: color var(--motion-chevron-duration) var(--motion-chevron-ease);
 }
 .console-cta:hover svg {
-  color: var(--console-accent-400);
+  color: var(--console-accent-400) !important;
 }
 .console-path-type-pill {
   display: inline-flex;
