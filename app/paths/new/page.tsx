@@ -229,7 +229,7 @@ export default function StartingNewPathPage() {
                         size="2"
                         variant="soft"
                         color="gray"
-                        className="!h-[var(--spacing-32)] !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !px-[var(--spacing-12)] !text-[length:var(--type-body03-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]"
+                        className="console-cta !h-[var(--spacing-32)] !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !px-[var(--spacing-12)] !text-[length:var(--type-body03-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]"
                         onClick={() => setNewPathTypeOpen((open) => !open)}
                       >
                         <Plus size={14} strokeWidth={1.8} /> Add new
@@ -357,7 +357,7 @@ export default function StartingNewPathPage() {
                             variant="soft"
                             color="gray"
                             disabled={!canAddPathType}
-                            className="!mt-[var(--spacing-16)] !h-[var(--spacing-32)] !w-full !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[length:var(--type-body01-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]"
+                            className="console-cta !mt-[var(--spacing-16)] !h-[var(--spacing-32)] !w-full !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[length:var(--type-body01-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]"
                             onClick={addPathType}
                           >
                             <Plus size={15} strokeWidth={1.8} /> Add path type

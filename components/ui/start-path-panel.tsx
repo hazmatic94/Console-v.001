@@ -28,13 +28,13 @@ export function StartPathPanel({
         </p>
         <div className="mt-[var(--spacing-16)]">
           {actionHref ? (
-            <Button asChild size="2" variant="soft" color="gray" className="!h-[var(--spacing-32)] !w-full !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[length:var(--type-body01-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
+            <Button asChild size="2" variant="soft" color="gray" className="console-cta !h-[var(--spacing-32)] !w-full !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[length:var(--type-body01-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
               <Link href={actionHref}>
                 <Plus size={15} strokeWidth={1.8} /> {actionLabel}
               </Link>
             </Button>
           ) : (
-            <Button type="button" size="2" variant="soft" color="gray" className="!h-[var(--spacing-32)] !w-full !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[length:var(--type-body01-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
+            <Button type="button" size="2" variant="soft" color="gray" className="console-cta !h-[var(--spacing-32)] !w-full !border !border-[var(--console-border)] !bg-[var(--console-button-secondary)] !text-[length:var(--type-body01-size)] !text-[var(--console-button-secondary-text)] !shadow-none hover:!bg-[var(--console-button-secondary-hover)] hover:!text-[var(--console-text-inverse)] active:!bg-[var(--console-button-secondary-active)]">
               <Plus size={15} strokeWidth={1.8} /> {actionLabel}
             </Button>
           )}

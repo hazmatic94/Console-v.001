@@ -246,6 +246,14 @@ summary::-webkit-details-marker {
   box-shadow: 0 0 0 var(--border-width) var(--console-accent-500);
 }
 
+.console-cta svg {
+  transition: color var(--motion-chevron-duration) var(--motion-chevron-ease);
+}
+
+.console-cta:hover svg {
+  color: var(--console-accent-400);
+}
+
 .console-path-type-pill {
   display: inline-flex;
   height: var(--spacing-32);
