@@ -400,11 +400,11 @@ export default function DesignSystemPage() {
                 <section className="border-b border-[var(--console-border)]">
                   <PanelHeader title="Recent entry rows" actionLabel="Add entry" secondary />
                   <div className="divide-y divide-[var(--console-border)] border-t border-[var(--console-border)]">
-                    <RecentEntryRow title="NQ strategy review" when="Today" tone="accent" />
-                    <RecentEntryRow title="Console layout direction" when="Today" tone="blue" />
-                    <RecentEntryRow title="Kitchen scope notes" when="Yesterday" tone="amber" />
-                    <RecentEntryRow title="Upper-body training" when="Yesterday" tone="red" />
-                    <RecentEntryRow title="Weekly review complete" when="Jun 11" tone="green" />
+                    <RecentEntryRow title="NQ strategy review" when="Today" tone="trading" />
+                    <RecentEntryRow title="Console layout direction" when="Today" tone="design" />
+                    <RecentEntryRow title="Kitchen scope notes" when="Yesterday" tone="home" />
+                    <RecentEntryRow title="Upper-body training" when="Yesterday" tone="bodybuilding" />
+                    <RecentEntryRow title="Weekly review complete" when="Jun 11" tone="productivity" />
                   </div>
                 </section>
 

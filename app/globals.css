@@ -157,6 +157,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+@media (min-width: 1024px) {
+  html.console-page-scroll-lock,
+  body.console-page-scroll-lock {
+    overflow: hidden;
+  }
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;

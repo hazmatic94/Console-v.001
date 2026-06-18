@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type CSSProperties, type PointerEvent } from "react";
+import { useEffect, useState, type CSSProperties, type PointerEvent } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Ban, ChevronLeft, Plus, X } from "lucide-react";
 import { PanelHeader } from "@/components/ui/panel-header";
 import { Button, Heading, Text } from "@/components/ui/primitives";
@@ -14,12 +15,11 @@ type PathType = {
 };
 
 const pathTypes: PathType[] = [
-  { name: "Trading", tone: "bg-[var(--console-danger)]" },
-  { name: "Fitness", tone: "bg-[var(--console-status-green)]" },
-  { name: "Business", tone: "bg-[var(--console-status-blue)]" },
-  { name: "Learning", tone: "bg-[var(--console-status-amber)]" },
-  { name: "Career", tone: "bg-[var(--console-accent)]" },
-  { name: "Personal", tone: "bg-[var(--console-status-green)]" },
+  { name: "Trading", tone: "bg-[var(--console-status-amber)]" },
+  { name: "Design", tone: "bg-[var(--console-status-blue)]" },
+  { name: "Home improvement", tone: "bg-[var(--console-status-green)]" },
+  { name: "Productivity", color: "#e5f56f" },
+  { name: "Bodybuilding", tone: "bg-[var(--console-danger)]" },
 ];
 
 const pathTypeSwatches = [
@@ -114,7 +114,9 @@ function PathField({ label, optional = false, placeholder, value, onChange }: Pa
 }
 
 export default function StartingNewPathPage() {
-  const [pathType, setPathType] = useState("");
+  const searchParams = useSearchParams();
+  const requestedPathType = searchParams.get("type")?.trim() ?? "";
+  const [pathType, setPathType] = useState(requestedPathType);
   const [customPathTypes, setCustomPathTypes] = useState<PathType[]>([]);
   const [newPathTypeOpen, setNewPathTypeOpen] = useState(false);
   const [newPathTypeName, setNewPathTypeName] = useState("");
@@ -134,6 +136,16 @@ export default function StartingNewPathPage() {
   const currentStateSummary = currentState.trim();
   const additionalContextSummary = additionalContext.trim();
   const hasPathSummary = Boolean(pathType || pathInformationSummary || currentStateSummary || additionalContextSummary);
+
+  useEffect(() => {
+    if (!requestedPathType) return;
+
+    setPathType(requestedPathType);
+    setCustomPathTypes((current) => {
+      const typeExists = [...pathTypes, ...current].some((type) => type.name === requestedPathType);
+      return typeExists ? current : [...current, { name: requestedPathType, color: defaultPathTypeColor }];
+    });
+  }, [requestedPathType]);
 
   const updateCustomColor = (nextHsv: typeof customColorHsv) => {
     const nextColor = hsvToHex(nextHsv.hue, nextHsv.saturation, nextHsv.value);

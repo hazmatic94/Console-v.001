@@ -1,4 +1,8 @@
 {
-  "/paths/new/page": "app/paths/new/page.js",
-  "/command/page": "app/command/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/paths/page": "app/paths/page.js",
+  "/progress/page": "app/progress/page.js",
+  "/command/page": "app/command/page.js",
+  "/architect/page": "app/architect/page.js",
+  "/design-system/page": "app/design-system/page.js"
 }

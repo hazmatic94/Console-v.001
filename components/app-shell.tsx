@@ -12,7 +12,7 @@ import {
   Palette,
   Route,
   Settings,
-  Target,
+  TrendingUp,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -24,7 +24,7 @@ type NavItem = { label: string; href: string; icon: LucideIcon };
 const navItems: NavItem[] = [
   { label: "Command", href: "/command", icon: CommandIcon },
   { label: "Paths", href: "/paths", icon: Route },
-  { label: "Missions", href: "/missions", icon: Target },
+  { label: "Progress", href: "/progress", icon: TrendingUp },
   { label: "Architect", href: "/architect", icon: Network },
   { label: "Settings", href: "/settings", icon: Settings },
   { label: "Design system", href: "/design-system", icon: Palette },
@@ -34,7 +34,7 @@ const headerContext: Record<string, { backHref?: string; backLabel?: string; sec
   "/command": { section: "Command", view: "Current focus" },
   "/paths": { section: "Paths", view: "Overview" },
   "/paths/new": { section: "Command", view: "Create Path" },
-  "/missions": { section: "Missions", view: "Overview" },
+  "/progress": { section: "Progress", view: "Overview" },
   "/architect": { section: "Architect", view: "Overview" },
   "/settings": { section: "Settings", view: "Preferences" },
   "/design-system": { section: "Design system", view: "Foundation" },

@@ -1,26 +1,28 @@
 import { ChevronRight, Plus } from "lucide-react";
 import type { ReactNode } from "react";
 
-export type EntryTone = "accent" | "blue" | "amber" | "red" | "green";
+export type EntryTone = "trading" | "design" | "home" | "productivity" | "bodybuilding";
 
 const entryTones: Record<EntryTone, string> = {
-  accent: "bg-[var(--console-accent)]",
-  blue: "bg-[var(--console-status-blue)]",
-  amber: "bg-[var(--console-status-amber)]",
-  red: "bg-[var(--console-danger)]",
-  green: "bg-[var(--console-status-green)]",
+  trading: "bg-[var(--console-status-amber)]",
+  design: "bg-[var(--console-status-blue)]",
+  home: "bg-[var(--console-status-green)]",
+  productivity: "bg-[#e5f56f]",
+  bodybuilding: "bg-[var(--console-danger)]",
 };
 
 type DisclosureRowProps = {
   title: string;
   meta: string;
+  tone?: EntryTone;
 };
 
-export function DisclosureRow({ title, meta }: DisclosureRowProps) {
+export function DisclosureRow({ title, meta, tone }: DisclosureRowProps) {
   return (
     <summary className="grid h-[var(--spacing-40)] cursor-pointer list-none grid-cols-[16px_minmax(0,1fr)_auto] items-center gap-[var(--spacing-12)] border-b border-[var(--console-border)] px-[var(--spacing-16)] outline-none transition-colors hover:bg-[var(--console-surface-hover)] focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--console-focus)] sm:px-[var(--spacing-24)]">
       <ChevronRight size={15} className="text-[var(--console-text-muted)] transition-[color,transform] duration-[var(--motion-chevron-duration)] ease-[var(--motion-chevron-ease)] group-hover:text-[var(--console-text-inverse)] group-open:rotate-90" />
       <div className="flex min-w-0 items-center gap-[var(--spacing-12)]">
+        {tone && <span className={`size-[var(--status-dot-size)] shrink-0 rounded-full ${entryTones[tone]}`} />}
         <p className="shrink-0 text-[length:var(--type-body01-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-inverse)]">{title}</p>
         <p className="hidden truncate text-[length:var(--type-body03-size)] leading-[var(--leading-normal)] tracking-[var(--tracking-body)] text-[var(--console-text-muted)] transition-colors group-hover:text-[var(--console-text)] sm:block">{meta}</p>
       </div>
